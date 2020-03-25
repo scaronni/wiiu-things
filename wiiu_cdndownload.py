@@ -8,7 +8,7 @@ import os
 import struct
 import sys
 import zlib
-from urllib.request import urlretrieve, urlopen
+from urllib.request import Request, urlopen, HTTPError
 
 if len(sys.argv) == 1:
     print('wiiu_cdndownload.py <titleid> [version]')
@@ -68,12 +68,23 @@ def download(url, printprogress=False, outfile=None, message_prefix='', message_
 
 
 base = 'http://ccs.cdn.c.shop.nintendowifi.net/ccs/download/' + tid
+keysite = 'vault.titlekeys.ovh'
 
 os.makedirs(tid, exist_ok=True)
+print('Downloading CETK (title.tik)...')
 if tid[4:8] not in app_categories:
-    print('Downloading CETK (title.tik)...')
     with open(tid + '/title.tik', 'wb') as f:
         download(base + '/cetk', False, f)
+else:
+    try:
+        request = Request('https://{}/ticket/{}.tik'.format(keysite, tid))
+        request.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 6.1; Win64; x64)')
+        response = urlopen(request).read()
+        with open(tid + '/title.tik', 'wb') as f:
+            f.write(response)
+    except HTTPError as err:
+        print('ERROR: CETK missing from key site')
+        sys.exit(1)
 
 print('Downloading TMD (title.tmd)...')
 # this is a mess how can i make it better
