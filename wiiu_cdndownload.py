@@ -128,6 +128,7 @@ else:
 
         title_key = title_data['titleKey']
         print('  Generating CETK from encrypted key ' + title_key)
+        print('  Fake CETK requires CFW')
         title_version = tmd[TK + 0x9C:TK + 0x9E]
         tikdata = bytearray(TIKTEM)
         tikdata[TK + 0xA6:TK + 0xA8] = title_version
