@@ -1,6 +1,5 @@
 # Wii U things
-Forked from [ihaveamac/wiiu-things](https://github.com/ihaveamac/wiiu-things).
-Using CETK (title.tik) creation from [giwty/FunKii-UI](https://github.com/giwty/FunKii-UI).
+Taking basic stuff from [ihaveamac/wiiu-things](https://github.com/ihaveamac/wiiu-things) and CETK (title.tik) creation from [giwty/FunKii-UI](https://github.com/giwty/FunKii-UI).
 
 [FST format layout](https://github.com/ihaveamac/wiiu-things/wiki/FST)
 
