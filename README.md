@@ -9,5 +9,6 @@ Using CETK (title.tik) creation from [giwty/FunKii-UI](https://github.com/giwty/
 * `wiiu_extract.py` - Extract contents from titles.
   * `--dump-info` - Print lots more info.
   * `--full-paths` - Show full paths in output.
-  * `--no-extract` - Son't extract files, only show info.
+  * `--no-extract` - Don't extract files, only show info.
   * `--all` - Show all files, including those with 0x80 bitmask in type (which probably means deleted file). only useful for title updates.
+* `wiiu_titlekeys.py` - Generate a formatted JSON file with all the known keys and generates a text key list for use with CEMU.
